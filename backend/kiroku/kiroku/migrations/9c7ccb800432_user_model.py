@@ -1,8 +1,8 @@
-"""initial migration
+"""user model
 
-Revision ID: 266926b5775b
-Revises:
-Create Date: 2017-10-27 08:22:59.421512
+Revision ID: 9c7ccb800432
+Revises: 
+Create Date: 2018-02-25 21:21:07.753481
 
 """
 from alembic import op
@@ -11,7 +11,7 @@ import sqlalchemy_utils
 
 
 # revision identifiers, used by Alembic.
-revision = '266926b5775b'
+revision = '9c7ccb800432'
 down_revision = None
 branch_labels = ('default',)
 depends_on = None
@@ -22,11 +22,12 @@ def upgrade():
     op.create_table('kiroku_user',
     sa.Column('name', sa.Unicode(length=255), nullable=False),
     sa.Column('email', sqlalchemy_utils.types.email.EmailType(length=255), nullable=False),
-    sa.Column('password', sqlalchemy_utils.types.password.PasswordType(), nullable=True),
+    sa.Column('password', sqlalchemy_utils.types.password.PasswordType(max_length=1137), postgresql_using='password::bytea', nullable=True),
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.Column('updated_at', sa.DateTime(), nullable=True),
-    sa.PrimaryKeyConstraint('id')
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('id')
     )
     # ### end Alembic commands ###
 

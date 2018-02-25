@@ -10,7 +10,7 @@ class BaseMixin(object):
     @declared_attr
     def id(cls):
 
-        return db.Column(db.Integer, primary_key=True)
+        return db.Column(db.Integer, primary_key=True, unique=True)
 
     @declared_attr
     def created_at(cls):
