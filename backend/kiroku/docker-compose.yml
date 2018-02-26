@@ -1,6 +1,14 @@
 version: '2'
 
 services:
+  postgres:
+    image: postgres:latest
+    expose:
+      - 5432
+    environment:
+      POSTGRES_USER: alan
+      POSTGRES_PASSWORD: kiroku
+      POSTGRES_DB: kiroku
   api:
     build: .
     container_name: kiroku
@@ -8,13 +16,5 @@ services:
       - ../kiroku:/opt/code
     ports:
       - "8080:8080"
-  #   depends_on:
-  #     - postgres
-  # postgres:
-  #   image: postgres:latest
-  #   expose:
-  #     - 5432
-  #   environment:
-  #     POSTGRES_USER: alan
-  #     POSTGRES_PASSWORD: kiroku
-  #     POSTGRES_DB: kiroku
+    depends_on:
+      - postgres

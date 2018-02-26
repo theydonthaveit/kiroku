@@ -22,7 +22,7 @@ def upgrade():
     op.create_table('kiroku_user',
     sa.Column('name', sa.Unicode(length=255), nullable=False),
     sa.Column('email', sqlalchemy_utils.types.email.EmailType(length=255), nullable=False),
-    sa.Column('password', sqlalchemy_utils.types.password.PasswordType(max_length=1137), postgresql_using='password::bytea', nullable=True),
+    sa.Column('password', sqlalchemy_utils.types.password.PasswordType(max_length=1137), nullable=True),
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.Column('updated_at', sa.DateTime(), nullable=True),
