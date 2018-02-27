@@ -25,4 +25,5 @@ class BaseMixin(object):
 
 
 from .user import *
+from .notes import *
 from .client import *

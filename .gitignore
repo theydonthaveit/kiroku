@@ -1,7 +1,12 @@
+frontend/kiroku/.vscode
 frontend/node_modules
 frontend/LICENSE
 
+backend/.vscode
+backend/kiroku/.vscode
+backend/kiroku/.env
 backend/bin
 backend/include
 backend/lib
 backend/pip-selfcheck.json
+backend/share/

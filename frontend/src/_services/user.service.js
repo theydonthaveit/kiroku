@@ -13,13 +13,16 @@ export const userService = {
 function login(username, password) {
     const requestOptions = {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+            'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MjIyNTU1NjAsImlhdCI6MTUxOTY2MzU2MCwibmJmIjoxNTE5NjYzNTYwLCJhdWQiOiIxIn0.7r61j0UUFVjNZhWK6512epcm4s65qBvud5Yv5UdsyiI',
+            'Content-Type': 'application/json'
+        },
         body: JSON.stringify({ username, password })
     };
 
-    return fetch('/users/authenticate', requestOptions)
+    return fetch('localhost:8080/users/authenticate', requestOptions)
         .then(response => {
-            if (!response.ok) { 
+            if (!response.ok) {
                 return Promise.reject(response.statusText);
             }
 
